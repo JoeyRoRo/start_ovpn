@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+import subprocess
+
+print("Starting VPN...")
+
+# try statement to try and start openvpn
+try:
+	subprocess.call('sudo openvpn --config /etc/openvpn/vpn-in111_ovpn196_account.ovpn', shell=True)
+
+# if the command is not availible to the OS, print the below statement	
+except OSError as e:
+	if e.errno == os.errno.ENOENT:
+		raw_input('Your operating system does not have openvpn installed. Please intall openvpn by using the command \"sudo apt-get install openvpn\".') 
+
+raw_input( "...Closed VPN\n\nPress enter to exit.")
+
